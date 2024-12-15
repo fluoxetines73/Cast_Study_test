@@ -108,31 +108,32 @@ class Case_Study_Env():
 
 if __name__ == "__main__":
 
-    stock_size = [60, 40]
-    products_size = [[30, 24], [56, 13], [22, 14], [23, 9]]
-    products_demand = [100, 122, 115, 156]
+    # stock_size = [60, 40]
+    # products_size = [[30, 24], [56, 13], [22, 14], [23, 9]]
+    # products_demand = [100, 122, 115, 156]
 
-    # stock_size = [88, 59]
-
-    # products_size = [[13, 9], [18, 14], [40, 28], [50, 13], [9, 5], [18, 14], [40, 28], [50, 13]]
-    
-    # products_demand = [100, 122, 115, 156, 100, 122, 115, 156]
+    stock_size = [490, 37]
+    products_size = [[230, 11], [83, 11], [63, 11], [100, 11], [63, 16], [83, 16], [100, 16], [63, 9], [83, 9], [100, 9], [125, 8], [230, 8]]
+    products_demand = [78, 30, 12, 3, 12, 18, 3, 24, 36, 6, 6 , 93]
 
     env = Case_Study_Env(stock_size=stock_size, product_sizes=products_size, product_demands=products_demand)
 
     env.reset()
     print("====================================")
-    ffd = Policy2352234(policy_id=1)
+    policies = [Policy2352234(policy_id=1), Policy2352234(policy_id=2)]
+    policy_name = ["First Fit Decreasing", "Maximize Remaining Rectangle"]
 
-    start = time.time()
-    while True:
-        action = ffd.get_action(env.observation, env.info)
-        obs, done, info = env._step(action)
-        if done:
-            end = time.time()
-            break
-
-    print("Time: ", end - start)
+    for policy in policies:
+        print("Policy: ", policy_name[policy.policy_id - 1])
+        start = time.time()
+        while True:
+            action = policy.get_action(env.observation, env.info)
+            observation, terminated, info = env._step(action)
+            if terminated:
+                env.reset()
+                break
+        end = time.time()
+        print("info: ", info)
+        print("Time: ", end - start)
 
     print("====================================")
-    print(info)
