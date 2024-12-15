@@ -108,15 +108,15 @@ class Case_Study_Env():
 
 if __name__ == "__main__":
 
-    # stock_size = [60, 40]
-    # products_size = [[30, 24], [56, 13], [22, 14], [23, 9]]
-    # products_demand = [100, 122, 115, 156]
+    stock_size = [60, 40]
+    products_size = [[30, 24], [56, 13], [22, 14], [23, 9]]
+    products_demand = [100, 122, 115, 156]
 
-    stock_size = [88, 59]
+    # stock_size = [88, 59]
 
-    products_size = [[13, 9], [18, 14], [40, 28], [50, 13], [9, 5], [18, 14], [40, 28], [50, 13]]
+    # products_size = [[13, 9], [18, 14], [40, 28], [50, 13], [9, 5], [18, 14], [40, 28], [50, 13]]
     
-    products_demand = [100, 122, 115, 156, 100, 122, 115, 156]
+    # products_demand = [100, 122, 115, 156, 100, 122, 115, 156]
 
     env = Case_Study_Env(stock_size=stock_size, product_sizes=products_size, product_demands=products_demand)
 
